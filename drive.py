@@ -35,4 +35,5 @@ class Drive:
                 time.sleep(0.01)
         
             currentMean = self.meanOf(distanceCollection)
+            print(currentMean)
         self.stop()
