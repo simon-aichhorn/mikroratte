@@ -13,8 +13,8 @@ class Drive:
     def rotateLeft(self):
         leftFront=0
         leftBack=0
-        rightFront=1000
-        rightBack=1000
+        rightFront=2000
+        rightBack=2000
         
         count=0
         while(count < 10):
@@ -23,14 +23,14 @@ class Drive:
             time.sleep(0.5)
             
             if(leftFront == 0):
-                leftFront=-1000
-                leftBack=-1000
+                leftFront=-2000
+                leftBack=-2000
                 rightFront=0
                 rightBack=0
             else:
                 leftFront=0
                 leftBack=0
-                rightFront=1000
-                rightBack=1000
+                rightFront=2000
+                rightBack=2000
             
         self.stop()
