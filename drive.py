@@ -7,7 +7,6 @@ from Ultrasonic import Ultrasonic
 class Drive:
     def __init__(self):
         self.motor=Motor()
-        self.motor.time_proportion=1
         self.ultrasonic=Ultrasonic()
         
     def stop(self):
