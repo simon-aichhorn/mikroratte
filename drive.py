@@ -42,6 +42,8 @@ class Drive:
         self.buzzer.run(cmd.CMD_START)
         time.sleep(1)
         self.buzzer.run(cmd.CMD_STOP)
+        
+        self.stop()
 
         
         
@@ -59,5 +61,6 @@ class Drive:
             bitcoded=(bitcoded | 2)
         elif GPIO.input(self.IR03)==True:
             bitcoded=(bitcoded | 4)
-            
+        
+        print(bitcoded)
         return bitcoded
