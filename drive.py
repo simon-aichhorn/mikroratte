@@ -11,6 +11,6 @@ class Drive:
         self.motor.setMotorModel(0,0,0,0)
         
     def rotateLeft(self):
-        self.motor.setMotorModel(0,0,1500,1500)
+        self.motor.setMotorModel(-1500,-1500,1500,1500)
         time.sleep(0.5)
         self.stop()
