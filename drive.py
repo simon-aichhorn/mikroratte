@@ -39,7 +39,9 @@ class Drive:
         lastMean = 1 # average distance of last 5 measures
         currentMean = 0 # average distance of the current 5 measures
         
+        self.stop()
         time.sleep(1)
+        self.motor.setMotorMode(-1500,-1500,2000,2000)
         
         while(lastMean >= currentMean):
             lastMean=currentMean
