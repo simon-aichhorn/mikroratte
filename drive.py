@@ -27,7 +27,7 @@ class Drive:
         lastMean = 0 # average distance of last 5 measures
         currentMean = 1 # average distance of the current 5 measures
         
-        while(lastMean >= currentMean && switch <= 1):
+        while(lastMean >= currentMean and switch <= 1):
             lastMean=currentMean
             
             read = self.ultrasonic.get_distance()
