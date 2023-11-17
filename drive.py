@@ -38,10 +38,6 @@ class Drive:
         while(not allActive):
             if(self.getIRState() == 7):
                 allActive = True
-            
-        self.buzzer.run(cmd.CMD_START)
-        time.sleep(1)
-        self.buzzer.run(cmd.CMD_STOP)
         
         self.stop()
 
