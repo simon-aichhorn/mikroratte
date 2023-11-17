@@ -34,5 +34,5 @@ class Drive:
                 distanceCollection.append(self.ultrasonic.get_distance())
                 time.sleep(0.1)
         
-            currentMean = meanOf(distanceCollection)
+            currentMean = self.meanOf(distanceCollection)
         self.stop()
