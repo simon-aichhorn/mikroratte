@@ -28,12 +28,7 @@ class Drive:
         
         while(lastMean < currentMean):
             lastMean=currentMean
-            distanceCollection=[]
-            
-            for x in range(0,6):
-                distanceCollection.append(self.ultrasonic.get_distance())
-                time.sleep(0.01)
-        
-            currentMean = self.meanOf(distanceCollection)
+            currentMean = self.ultrasonic.get_distance()
             print(currentMean)
+            
         self.stop()
