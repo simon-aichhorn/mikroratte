@@ -9,20 +9,30 @@ class Drive:
         self.motor=Motor()
         self.ultrasonic=Ultrasonic()
         
+    def meanOf(self, array):
+        sum=0
+        
+        for i in array:
+            sum += i
+            
+        return sum/len(array)
+        
     def stop(self):
         self.motor.setMotorModel(0,0,0,0)
         
     def rotateLeft(self):
         self.motor.setMotorModel(-1500,-1500,2000,2000)
         
-        lastMean = 1 # average distance of last 5 measures
+        lastMean = 10000 # average distance of last 5 measures
         currentMean = 0 # average distance of the current 5 measures
         
-        distanceCollection=[]
         while(lastMean > currentMean):
+            lastMean=currentMean
+            distanceCollection=[]
+            
             for x in range(0,6):
                 distanceCollection.append(self.ultrasonic.get_distance())
                 time.sleep(0.1)
         
-        
+            currentMean = meanOf(distanceCollection)
         self.stop()
