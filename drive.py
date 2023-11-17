@@ -14,7 +14,7 @@ class Drive:
         self.motor.setMotorModel(0,0,0,0)
         
     def rotateLeft(self):
-        self.motor.Rotate(0)
+        self.motor.setMotorModel(-1500,-1500,2000,2000)
         
         lastMean = 0 # average distance of last 5 measures
         currentMean = 0 # average distance of the current 5 measures
