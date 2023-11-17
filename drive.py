@@ -7,10 +7,10 @@ class Drive:
     def __init__(self):
         self.motor=Motor()
         
-    def stop():
+    def stop(self):
         self.motor.setMotorModel(0,0,0,0)
         
-    def rotateLeft():
+    def rotateLeft(self):
         self.motor.setMotorModel(0,0,1500,1500)
         time.sleep(0.5)
         self.stop()
