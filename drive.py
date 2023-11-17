@@ -12,7 +12,7 @@ class Drive:
         self.ultrasonic=Ultrasonic()
         self.initIR()
         
-    def initIR():
+    def initIR(self):
         self.IR01 = 14
         self.IR02 = 15
         self.IR03 = 23
@@ -21,10 +21,10 @@ class Drive:
         GPIO.setup(self.IR02,GPIO.IN)
         GPIO.setup(self.IR03,GPIO.IN)
         
-    def slowForward():
+    def slowForward(self):
         self.motor.setMotorModel(750,750,750,750)
         
-    def slowBackward():
+    def slowBackward(self):
         self.motor.setMotorModel(-750,-750,-750,-750)
         
     def stop(self):
@@ -46,7 +46,7 @@ class Drive:
         
         
         
-    def getIRState():
+    def getIRState(self):
         # we use a bit-coded-value for IR-State
         # left sensor = first bit = 1
         # middle sensor second bit = 2
