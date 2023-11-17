@@ -24,8 +24,8 @@ class Drive:
         self.motor.setMotorModel(-1500,-1500,2000,2000)
         
         switch=0
-        lastMean = 0 # average distance of last 5 measures
-        currentMean = 1 # average distance of the current 5 measures
+        lastMean = 1 # average distance of last 5 measures
+        currentMean = 0 # average distance of the current 5 measures
         
         while(lastMean >= currentMean and switch <= 1):
             lastMean=currentMean
