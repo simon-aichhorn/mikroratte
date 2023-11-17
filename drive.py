@@ -28,7 +28,11 @@ class Drive:
         
         while(lastMean < currentMean):
             lastMean=currentMean
-            currentMean = self.ultrasonic.get_distance()
+            
+            read = self.ultrasonic.get_distance()
+            
+            if(read != 0):
+                currentMean = read
             print(currentMean)
             
         self.stop()
