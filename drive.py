@@ -13,24 +13,24 @@ class Drive:
     def rotateLeft(self):
         leftFront=0
         leftBack=0
-        rightFront=1500
-        rightBack=1500
+        rightFront=1000
+        rightBack=1000
         
         count=0
         while(count < 10):
             count += 1
             self.motor.setMotorModel(leftFront, leftBack, rightFront, rightBack)
-            time.sleep(0.1)
+            time.sleep(0.5)
             
             if(leftFront == 0):
-                leftFront=-1500
-                leftBack=-1500
+                leftFront=-1000
+                leftBack=-1000
                 rightFront=0
                 rightBack=0
             else:
                 leftFront=0
                 leftBack=0
-                rightFront=1500
-                rightBack=1500
+                rightFront=1000
+                rightBack=1000
             
         self.stop()
