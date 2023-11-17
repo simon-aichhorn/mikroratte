@@ -3,55 +3,61 @@ sys.path.append('../Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server')
 import time
 from Motor import Motor
 from Ultrasonic import Ultrasonic
+from Buzzer import *
 
 class Drive:
     def __init__(self):
         self.motor=Motor()
+        self.buzzer=Buzzer()
         self.ultrasonic=Ultrasonic()
+        self.initIR()
         
-    def meanOf(self, array):
-        sum=0
+    def initIR():
+        self.IR01 = 14
+        self.IR02 = 15
+        self.IR03 = 23
+        GPIO.setmode(GPIO.BCM)
+        GPIO.setup(self.IR01,GPIO.IN)
+        GPIO.setup(self.IR02,GPIO.IN)
+        GPIO.setup(self.IR03,GPIO.IN)
         
-        for i in array:
-            sum += i
-            
-        return sum/len(array)
+    def slowForward():
+        self.motor.setMotorModel(750,750,750,750)
+        
+    def slowBackward():
+        self.motor.setMotorModel(-750,-750,-750,-750)
         
     def stop(self):
         self.motor.setMotorModel(0,0,0,0)
         
-    def rotateLeft(self):
-        self.motor.setMotorModel(-1500,-1500,2000,2000)
+    def driveNextField(self):
+        self.slowForward()
         
-        switch=0
-        lastMean = 0 # average distance of last 5 measures
-        currentMean = 1 # average distance of the current 5 measures
-        
-        while(lastMean <= currentMean):
-            lastMean=currentMean
+        allActive = False
+        # check if all ir are active
+        while(!allActive):
+            if(self.getIRState() == 7):
+                allActive = True
             
-            read = self.ultrasonic.get_distance()
-            
-            if(read != 0):
-                currentMean = read
-            print(currentMean)
-            
-        lastMean = 1 # average distance of last 5 measures
-        currentMean = 0 # average distance of the current 5 measures
-        
-        count = 0
-        self.stop()
+        self.buzzer.run(cmd.CMD_START)
         time.sleep(1)
-        self.motor.setMotorModel(-1500,-1500,2000,2000)
+        self.buzzer.run(cmd.CMD_STOP)
+
         
-        while(lastMean >= currentMean or count < 2):
-            lastMean=currentMean
-            count += 1
-            read = self.ultrasonic.get_distance()
-            
-            if(read != 0):
-                currentMean = read
-            print(currentMean)
-            
-        self.stop()
         
+        
+    def getIRState():
+        # we use a bit-coded-value for IR-State
+        # left sensor = first bit = 1
+        # middle sensor second bit = 2
+        # right sensor = third bit = 4
+        bitcoded=0x00
+        
+        if GPIO.input(self.IR01)==True:
+            bitcoded=(bitcoded | 1)
+        else if GPIO.input(self.IR02)==True:
+            bitcoded=(bitcoded | 2)
+        else if GPIO.input(self.IR03)==True:
+            bitcoded=(bitcoded | 4)
+            
+        return bitcoded
