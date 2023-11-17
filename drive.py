@@ -61,5 +61,4 @@ class Drive:
         if GPIO.input(self.IR03)==True:
             bitcoded=(bitcoded | 4)
         
-        print(bitcoded)
         return bitcoded
