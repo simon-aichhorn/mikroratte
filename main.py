@@ -4,6 +4,12 @@ from drive import Drive
 
 try:
     drive=Drive()
-    drive.driveNextField()
+    
+    for i in range(0, 3):
+        drive.driveNextField()
+        
+    for i in range(0, 2):
+        drive.driveBackField()
+    
 except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
     drive.stop()

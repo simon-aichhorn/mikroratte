@@ -36,6 +36,18 @@ class Drive:
         #some sleep to drive away from line
         time.sleep(0.5)
         
+        self.waitForLine()
+        
+        
+    def driveBackField(self):
+        self.slowBackward()
+        
+        #some sleep to drive away from line
+        time.sleep(0.5)
+        
+        self.waitForLine()
+        
+    def waitForLine(self):
         allActive = False
         # check if all ir are active
         while(not allActive):
