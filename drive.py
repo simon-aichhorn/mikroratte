@@ -36,8 +36,7 @@ class Drive:
                 currentMean = read
             print(currentMean)
             
-            if(lastMean > currentMean) {
+            if(lastMean > currentMean):
                 switch += 1
-            }
             
         self.stop()
