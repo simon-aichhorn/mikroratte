@@ -4,7 +4,6 @@ from drive import Drive
 
 try:
     drive=Drive()
-
     drive.rotateLeft()
 except KeyboardInterrupt:  # When 'Ctrl+C' is pressed, the child program destroy() will be  executed.
     drive.stop()
