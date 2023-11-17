@@ -39,13 +39,14 @@ class Drive:
         lastMean = 1 # average distance of last 5 measures
         currentMean = 0 # average distance of the current 5 measures
         
+        count = 0
         self.stop()
         time.sleep(1)
         self.motor.setMotorModel(-1500,-1500,2000,2000)
         
-        while(lastMean >= currentMean):
+        while(lastMean >= currentMean or count < 2):
             lastMean=currentMean
-            
+            count += 1
             read = self.ultrasonic.get_distance()
             
             if(read != 0):
