@@ -57,9 +57,9 @@ class Drive:
         
         if GPIO.input(self.IR01)==True:
             bitcoded=(bitcoded | 1)
-        elif GPIO.input(self.IR02)==True:
+        if GPIO.input(self.IR02)==True:
             bitcoded=(bitcoded | 2)
-        elif GPIO.input(self.IR03)==True:
+        if GPIO.input(self.IR03)==True:
             bitcoded=(bitcoded | 4)
         
         print(bitcoded)
