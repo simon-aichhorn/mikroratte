@@ -35,7 +35,7 @@ class Drive:
         
         allActive = False
         # check if all ir are active
-        while(!allActive):
+        while(not allActive):
             if(self.getIRState() == 7):
                 allActive = True
             
