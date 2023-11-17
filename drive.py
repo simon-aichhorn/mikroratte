@@ -41,7 +41,7 @@ class Drive:
         
         self.stop()
         time.sleep(1)
-        self.motor.setMotorMode(-1500,-1500,2000,2000)
+        self.motor.setMotorModel(-1500,-1500,2000,2000)
         
         while(lastMean >= currentMean):
             lastMean=currentMean
