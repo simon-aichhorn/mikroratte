@@ -33,6 +33,9 @@ class Drive:
     def driveNextField(self):
         self.slowForward()
         
+        #some sleep to drive away from line
+        time.sleep(0.5)
+        
         allActive = False
         # check if all ir are active
         while(not allActive):
