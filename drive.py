@@ -23,10 +23,11 @@ class Drive:
     def rotateLeft(self):
         self.motor.setMotorModel(-1500,-1500,2000,2000)
         
+        switch=0
         lastMean = 0 # average distance of last 5 measures
         currentMean = 1 # average distance of the current 5 measures
         
-        while(lastMean <= currentMean):
+        while(lastMean >= currentMean && switch <= 1):
             lastMean=currentMean
             
             read = self.ultrasonic.get_distance()
@@ -34,5 +35,9 @@ class Drive:
             if(read != 0):
                 currentMean = read
             print(currentMean)
+            
+            if(lastMean > currentMean) {
+                switch += 1
+            }
             
         self.stop()
