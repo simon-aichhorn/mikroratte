@@ -7,6 +7,7 @@ from rpi_ws281x import *
 class LED:
     def __init__(self):
         self.led=Led()
+        self.activateDayLight();
     
     def colorAllLeds(self, color):
         for ledIndex in range(0, 9):
@@ -25,8 +26,11 @@ class LED:
         self.led.strip.setPixelColor(2, Color(255, 255, 255))
         self.led.strip.show()
 
-    def deactivateReverseLights(self):
+    def activateDayLight(self):
         self.led.strip.setPixelColor(1, Color(96, 0, 0))
         self.led.strip.setPixelColor(2, Color(96, 0, 0))
+        
+        self.led.strip.setPixelColor(5, Color(255, 255, 255))
+        self.led.strip.setPixelColor(6, Color(255, 255, 255))
         self.led.strip.show()
 
