@@ -151,6 +151,8 @@ try:
     drive.driveNextField()
     setNewCurrentPosition() # update position
 
+    secondCell=false
+
     while(True):
         # get or create new cell
         newCell=getCellFromCurrentPosition()
@@ -159,10 +161,11 @@ try:
 
         newCell.discovered=True
 
-        if(i == 0):
+        if(not secondCell):
             # only add second cell directly to start cell, because start cell does not execute a scan
             startCell.addConnectedCell(newCell)
             newCell.addConnectedCell(startCell)
+            secondCell = True
 
         
         free_ways = startExploration(newCell)
