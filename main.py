@@ -11,10 +11,10 @@ try:
     
     led.activateReverseLights()
     time.sleep(2)
+    
+    led.deactivateReverseLights()
 
-    led.activateDayLight()
     time.sleep(2)
-
     led.turnOff()
     
 except KeyboardInterrupt: # interupting will stop car
