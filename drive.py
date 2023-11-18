@@ -68,6 +68,7 @@ class Drive:
                 time.sleep(1)
             else:
                 if(self.isOnLine()):
+                    print("Detected Line!")
                     break
 
             self.stop()
