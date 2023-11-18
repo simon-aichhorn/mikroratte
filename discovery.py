@@ -177,8 +177,9 @@ try:
         grid[newCell.x][newCell.y]=newCell
 
         if(free_ways[1] and not grid[getFrontPosition()[0]][getFrontPosition()[1]].discovered):
+            print("Yes!")
             drive.driveNextField()
-            setNewCurrentPosition
+            setNewCurrentPosition()
         elif(free_ways[0] and not grid[getLeftPosition()[0]][getLeftPosition()[1]].discovered):
             drive.rotateRight()
             drive.rotateRight()
