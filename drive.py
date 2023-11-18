@@ -48,8 +48,8 @@ class Drive:
         self.motor.setMotorModel(0,0,0,0)
         
     def driveNextField(self):
-        while(not isOnLine()):
-            distances=checkDistances()
+        while(not self.isOnLine()):
+            distances=self.checkDistances()
 
             # check if we are standing in front of a wall
             if(distances[1] < 8):
