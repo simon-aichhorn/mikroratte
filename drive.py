@@ -110,4 +110,4 @@ class Drive:
         time.sleep(0.2)
         distances=(distances[0], distances[1], self.ultrasonic.get_distance())
 
-        return checkDistances
+        return distances
