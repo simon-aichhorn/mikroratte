@@ -103,8 +103,8 @@ class Drive:
                 time.sleep(0.3)
                 if i==30:
                     distanceLeft = self.ultrasonic.get_distance()
-                #elif i==90:
-                #    M = self.get_distance()
+                elif i==90:
+                    M = self.get_distance()
                 else:
                     distanceRight = self.ultrasonic.get_distance()
                 print(distanceLeft, distanceRight)
@@ -113,8 +113,8 @@ class Drive:
                 time.sleep(0.3)
                 if i==0:
                     distanceLeft = self.ultrasonic.get_distance()
-                #elif i==90:
-                #    M = self.get_distance()
+                elif i==90:
+                    M = self.get_distance()
                 else:
                     distanceRight = self.ultrasonic.get_distance()
                 print(distanceLeft, distanceRight)
