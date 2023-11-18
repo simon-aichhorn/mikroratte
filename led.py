@@ -22,9 +22,11 @@ class LED:
 
     def activateReverseLights(self):
         self.led.strip.setPixelColor(0, Color(255, 255, 255))
-        self.led.strip.setPixelColor(7, Color(255, 255, 255))
+        self.led.strip.setPixelColor(9, Color(255, 255, 255))
+        self.led.strip.show()
 
     def deactivateReverseLights(self):
-        self.led.strip.setPixelColor(0, Color(255, 0, 0))
-        self.led.strip.setPixelColor(7, Color(255, 0, 0))
+        self.led.strip.setPixelColor(0, Color(0, 0, 0))
+        self.led.strip.setPixelColor(9, Color(0, 0, 0))
+        self.led.strip.show()
 
