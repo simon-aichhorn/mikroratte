@@ -5,6 +5,7 @@ from drive import Drive
 from led import LED
 from rfw import Rfw
 from rpi_ws281x import *
+from cell import Cell
 
 drive=Drive()
 
