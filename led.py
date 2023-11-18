@@ -12,6 +12,9 @@ class LED:
         for ledIndex in range(0, 9):
             self.led.strip.setPixelColor(ledIndex, color)
         self.led.strip.show()
+        
+    def turnOff(self):
+        self.colorAllLeds(Color(0,0,0))
     
     # cycles colors one time
     def showRainbow(self):

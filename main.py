@@ -10,6 +10,10 @@ try:
     led=LED()
     
     led.colorAllLeds(Color(128,192,73))
+    
+    time.sleep(5)
+    
+    led.turnOff()
     #for i in range(0, 3):
     #   drive.driveNextField()
     #  time.sleep(0.5)
