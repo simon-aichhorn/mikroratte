@@ -48,7 +48,7 @@ def startExploration(currentCell):
     
     # check if wall in front
     if(drive.frontDistance > is_next_cell_free_thresh):
-        free_ways[1]=True
+        free_ways=(free_ways[0], True, free_ways[2])
 
     drive.slowBackward()
     time.sleep(0.2)
@@ -59,7 +59,7 @@ def startExploration(currentCell):
     setNewCurrentRotation()
     time.sleep(0.5)
     if(drive.frontDistance > is_next_cell_free_thresh):
-        free_ways[2]=True
+        free_ways=(free_ways[0], free_ways[1], True)
 
     # check wall left
     drive.rotateRight()
@@ -68,7 +68,7 @@ def startExploration(currentCell):
     setNewCurrentRotation()
     time.sleep(0.5)
     if(drive.frontDistance > is_next_cell_free_thresh):
-        free_ways[0]=True
+        free_ways=(True, free_ways[1], free_ways[2])
 
     drive.rotateRight()
     setNewCurrentRotation()
