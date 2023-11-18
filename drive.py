@@ -96,7 +96,7 @@ class Drive:
 
     def rotateRight(self):
         self.motor.setMotorModel(1500,1500,-1500,-1500)
-        time.sleep(0.85)
+        time.sleep(0.80)
         self.motor.setMotorModel(0,0,0,0)
         
         
