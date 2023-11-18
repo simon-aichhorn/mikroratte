@@ -33,6 +33,7 @@ class Drive:
         
     def slowForward(self):
         while not self.stop_driving.is_set():
+            print("Test", self.leftDistance, self.rightDistance)
             wallDifference = self.leftDistance - self.rightDistance # positive difference = correct to left | negative difference = correct to right
             factor = 30
 
