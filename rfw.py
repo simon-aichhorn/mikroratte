@@ -2,12 +2,12 @@ import sys
 sys.path.append('../Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server')
 import time
 from Buzzer import *
-from Led import led
+from Led import LED
 
 class Rfw:
     def __init__(self):
         self.buzzer = Buzzer()
-        self.led = Led()
+        self.led = LED()
         self.isRFWActive = False
 
     def activateRFW(self):
