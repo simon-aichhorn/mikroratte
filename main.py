@@ -8,7 +8,7 @@ try:
     drive=Drive()
     led=LED()
     
-    led.show()
+    led.colorAllLeds()
     #for i in range(0, 3):
     #   drive.driveNextField()
     #  time.sleep(0.5)

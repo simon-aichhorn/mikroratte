@@ -7,5 +7,9 @@ class LED:
     def __init__(self):
         self.led=Led()
     
-    def show(self):
+    def colorAllLeds(self):
+        self.led.strip.setPixelColor(1, Color(255,0,0))
+    
+    # cycles colors one time
+    def showRainbow(self):
         self.led.rainbow(self.led.strip)
