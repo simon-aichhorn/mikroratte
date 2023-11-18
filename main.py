@@ -31,6 +31,8 @@ try:
     # time.sleep(2)
     # led.turnOff()
     drive.driveNextField()
+    drive.driveNextField()
+    drive.driveNextField()
 
 
 except KeyboardInterrupt: # interupting will stop car

@@ -16,6 +16,8 @@ class Drive:
         self.pwm_S=Servo()
 
         self.still_driving=False
+        self.leftDistance=0 # distance to left wall
+        self.rightDistance=0 # distance to right wall
         
     def initIR(self):
         self.IR01 = 14
@@ -28,7 +30,14 @@ class Drive:
         
     def slowForward(self):
         while not self.stop_driving.is_set():
-            self.motor.setMotorModel(750,750,750,750)
+            wallDifference = self.leftDistance - self.rightDistance # positive difference = correct to left | negative difference = correct to right
+            factor = 30
+
+            nV = 750
+            LW = nV - (wallDifference * factor)
+            RW = nV + (wallDifference * factor)
+
+            self.motor.setMotorModel(LW,LW,RW,RW)
             time.sleep(0.5)
             self.motor.setMotorModel(0,0,0,0)
             time.sleep(0.1)
@@ -55,7 +64,6 @@ class Drive:
         
         self.waitForLine(correctingDriveThread)
 
-        print("stop")
         # stop threads
         self.stop_driving.set()
         
@@ -94,27 +102,23 @@ class Drive:
         return bitcoded
 
     def correctDrive(self):
-        distanceLeft = 0
-        distanceRight = 0
 
         while(True):
             for i in range(90,30,-60):
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.3)
                 if i==30:
-                    distanceLeft = self.ultrasonic.get_distance()
+                    self.distanceLeft = self.ultrasonic.get_distance()
                 elif i==90:
                     M = self.ultrasonic.get_distance()
                 else:
-                    distanceRight = self.ultrasonic.get_distance()
-                print(distanceLeft, distanceRight)
+                    self.distanceRight = self.ultrasonic.get_distance()
             for i in range(0,181,90):
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.3)
                 if i==0:
-                    distanceLeft = self.ultrasonic.get_distance()
+                    self.distanceLeft = self.ultrasonic.get_distance()
                 elif i==90:
                     M = self.ultrasonic.get_distance()
                 else:
-                    distanceRight = self.ultrasonic.get_distance()
-                print(distanceLeft, distanceRight)
+                    self.distanceRight = self.ultrasonic.get_distance()
