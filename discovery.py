@@ -198,7 +198,7 @@ try:
         elif(not free_ways[0] and not free_ways[1] and not free_ways[2]):
             drive.slowBackward()
             # Implement function to go one cell back
-        else
+        else:
             print("Deadend")
 
 
