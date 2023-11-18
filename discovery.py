@@ -151,7 +151,7 @@ try:
     drive.driveNextField()
     setNewCurrentPosition() # update position
 
-    secondCell=false
+    secondCell=False
 
     while(True):
         # get or create new cell
