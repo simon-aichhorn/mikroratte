@@ -63,6 +63,7 @@ class Drive:
     def driveNextField(self):
         # create stopping event
         self.stop_driving = threading.Event()
+        print(self.stop_driving)
 
         # create forwarding driving thread
         driveForwardThread = threading.Thread(target= self.slowForward)

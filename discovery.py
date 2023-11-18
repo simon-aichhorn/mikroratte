@@ -92,6 +92,7 @@ try:
     for i in range(0,6):
         # enter next cell
         drive.driveNextField()
+        print("Test!")
         setNewCurrentPosition() # update position
         
         # create new cell
