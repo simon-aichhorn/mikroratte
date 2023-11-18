@@ -82,6 +82,7 @@ for y in range(0, 7):
 try:
     # get to start line
     drive.driveNextField()
+    print("Teeeeeeeest")
 
     # create start cell
     startCell=Cell(currentPosition[0], currentPosition[1])
@@ -91,6 +92,7 @@ try:
 
     for i in range(0,6):
         # enter next cell
+        print("Test1!")
         drive.driveNextField()
         print("Test!")
         setNewCurrentPosition() # update position
