@@ -18,6 +18,7 @@ class Drive:
         self.still_driving=False
         self.leftDistance=0 # distance to left wall
         self.rightDistance=0 # distance to right wall
+        self.frontDistance=0 # distance to front
 
         correctingDriveThread = threading.Thread(target = self.correctDrive)
         correctingDriveThread.start()
@@ -33,7 +34,6 @@ class Drive:
         
     def slowForward(self):
         while not self.stop_driving.is_set():
-            print("Distances", self.leftDistance, self.rightDistance)
             wallDifference = self.leftDistance - self.rightDistance # positive difference = correct to left | negative difference = correct to right
             factor = 12
 
@@ -41,12 +41,13 @@ class Drive:
             LW = nV - (wallDifference * factor)
             RW = nV + (wallDifference * factor)
 
-            print(LW, RW)
-
             self.motor.setMotorModel(LW,LW,RW,RW)
             time.sleep(0.25)
             self.motor.setMotorModel(0,0,0,0)
             time.sleep(0.1)
+
+            if(self.frontDistance < 5):
+                self.stop_driving.set()
         
     def slowBackward(self):
         self.motor.setMotorModel(-750,-750,-750,-750)
@@ -114,9 +115,7 @@ class Drive:
                 if i==30:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    distanceFront = self.ultrasonic.get_distance()
-                    if(distanceFront < 6):
-                        self.stop_driving.set()
+                    self.frontDistance = self.ultrasonic.get_distance()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
             for i in range(0,181,90):
@@ -125,8 +124,6 @@ class Drive:
                 if i==0:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    distanceFront = self.ultrasonic.get_distance()
-                    if(distanceFront < 6):
-                        self.stop_driving.set()
+                    self.frontDistance = self.ultrasonic.get_distance()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
