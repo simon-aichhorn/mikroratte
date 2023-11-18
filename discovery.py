@@ -28,7 +28,7 @@ def setNewCurrentPosition():
         case 'UNTEN':
             currentPosition=(currentPosition[0], currentPosition[1] + 1)
 
-def setNewCurrentPosition():
+def setNewCurrentRotation():
     global currentOrientation
     match currentOrientation:
         case 'RECHTS':
