@@ -16,6 +16,18 @@ try:
 
     time.sleep(2)
     led.turnOff()
+
+    time.sleep(2)
+    led.blinkers('left')
+
+    time.sleep(2)
+    led.blinkers('right')
+
+    time.sleep(2)
+    led.blinkers('hazard')
+
+    time.sleep(2)
+    led.turnOff()
     
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
