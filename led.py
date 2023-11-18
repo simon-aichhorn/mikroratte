@@ -43,8 +43,10 @@ class LED:
         match type:
             case 'left':
                 self.led.strip.setPixelColor(3, Color(155, 34, 32))
+                self.led.strip.setPixelColor(4, Color(155, 34, 32))
             case 'right':
                 self.led.strip.setPixelColor(0, Color(155, 34, 32))
+                self.led.strip.setPixelColor(7, Color(155, 34, 32))
             case 'hazard':
                 self.led.strip.setPixelColor(0, Color(155, 34, 32))
                 self.led.strip.setPixelColor(3, Color(155, 34, 32))
