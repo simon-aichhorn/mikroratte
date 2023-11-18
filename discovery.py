@@ -17,6 +17,7 @@ currentOrientation='RECHTS'
 is_next_cell_free_thresh = 30
 
 def setNewCurrentPosition():
+    global currentPosition
     match currentOrientation:
         case 'RECHTS':
             currentPosition=(currentPosition[0] + 1, currentPosition[1])
@@ -28,6 +29,7 @@ def setNewCurrentPosition():
             currentPosition=(currentPosition[0], currentPosition[1] + 1)
 
 def setNewCurrentPosition():
+    global currentOrientation
     match currentOrientation:
         case 'RECHTS':
             currentOrientation='UNTEN'
