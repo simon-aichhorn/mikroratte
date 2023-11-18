@@ -96,8 +96,10 @@ class Drive:
         self.stop()
 
     def rotateRight(self):
-        self.motor.setMotorModel(1500,1500,-1500,-1500)
-        time.sleep(0.80)
+        self.motor.setMotorModel(1500,1500,800,800)
+        time.sleep(0.5)
+        self.motor.setMotorModel(-800,-800,-1500,-1500)
+        time.sleep(0.5)
         self.motor.setMotorModel(0,0,0,0)
         
         
