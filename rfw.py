@@ -6,25 +6,33 @@ from Led import led
 
 class Rfw:
     def __init__(self):
-        self.buzzer=Buzzer()
-        self.led=Led()
-        isRFWActive = False
+        self.buzzer = Buzzer()
+        self.led = Led()
+        self.isRFWActive = False
+
+    def activateRFW(self):
+        self.isRFWActive = True
+        self.buzzer_thread = threading.Thread(target=self._beep_continuously)
+        self.buzzer_thread.start()
+        self.led.activateReverseLights()
+
+    def deactivateRFW(self):
+        self.isRFWActive = False
+        self.led.deactivateReverseLights()
 
     def startRFW(self):
-        if not isRFWActive:
+        if not self.isRFWActive:
             self.activateRFW()
-            self.led.activateReverseLights()
-    
-    def stopRFW(self):
-        if isRFWActive:
-            self.led.deactivateReverseLights()
-            self.deactivateRFW()
-    
-    def isRFWActive(self):
-        return isRFWActive
 
-    def beep(self):
-        while isRFWActive:
+    def stopRFW(self):
+        if self.isRFWActive:
+            self.deactivateRFW()
+
+    def isRFWActive(self):
+        return self.isRFWActive
+
+    def _beep_continuously(self):
+        while self.isRFWActive:
             self.buzzer.run('1')
             time.sleep(1)
             self.buzzer.run('0')
