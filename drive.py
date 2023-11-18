@@ -67,21 +67,13 @@ class Drive:
             if(run == 0):
                 time.sleep(0.5)
             else:
-                time.sleep(0.01)
-                if(self.isOnLine()):
-                    break
-                time.sleep(0.01)
-                if(self.isOnLine()):
-                    break
-                time.sleep(0.01)
-                if(self.isOnLine()):
-                    break
-                time.sleep(0.01)
-                if(self.isOnLine()):
-                    break
-                time.sleep(0.01)
-                if(self.isOnLine()):
-                    break
+                for i in range(0, 11):
+                    time.sleep(0.05)
+                    if(self.isOnLine()):
+                        break
+                else:
+                    continue
+                break
 
             self.stop()
 
