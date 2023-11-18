@@ -5,7 +5,7 @@ from Motor import Motor
 from Ultrasonic import Ultrasonic
 from Buzzer import *
 from servo import Servo
-from threading import Thread
+import threading
 
 class Drive:
     def __init__(self):
@@ -14,6 +14,8 @@ class Drive:
         self.ultrasonic=Ultrasonic()
         self.initIR()
         self.pwm_S=Servo()
+
+        self.still_driving=False
         
     def initIR(self):
         self.IR01 = 14
@@ -25,7 +27,11 @@ class Drive:
         GPIO.setup(self.IR03,GPIO.IN)
         
     def slowForward(self):
-        self.motor.setMotorModel(750,750,750,750)
+        while not stop_driving.is_set():
+            self.motor.setMotorModel(750,750,750,750)
+            thread.sleep(0.1)
+            self.motor.setMotorModel(0,0,0,0)
+            thread.sleep(0.1)
         
     def slowBackward(self):
         self.motor.setMotorModel(-750,-750,-750,-750)
@@ -34,15 +40,23 @@ class Drive:
         self.motor.setMotorModel(0,0,0,0)
         
     def driveNextField(self):
-        self.slowForward()
-        correctingDriveThread = Thread(target = self.correctDrive)
+        # create stopping event
+        stop_driving = threading.Event()
+
+        # create forwarding driving thread
+        driveForwardThread = threading.Thread(target= self.slowForward)
+        correctingDriveThread = threading.Thread(target = self.correctDrive)
+
+        driveForwardThread.start()
         correctingDriveThread.start()
 
         #some sleep to drive away from line
         time.sleep(0.5)
         
         self.waitForLine(correctingDriveThread)
-        
+
+        # stop threads
+        stop_driving.set()
         
     def driveBackField(self):
         self.slowBackward()
@@ -83,9 +97,9 @@ class Drive:
         distanceRight = 0
 
         while(True):
-            for i in range(90,30,-60):
+            for i in range(,30,-60):
                 self.pwm_S.setServoPwm('0',i)
-                time.sleep(0.2)
+                time.sleep(0.3)
                 if i==30:
                     distanceLeft = self.ultrasonic.get_distance()
                 #elif i==90:
@@ -93,10 +107,10 @@ class Drive:
                 else:
                     distanceRight = self.ultrasonic.get_distance()
                 print(distanceLeft, distanceRight)
-            for i in range(30,151,60):
+            for i in range(0,181,90):
                 self.pwm_S.setServoPwm('0',i)
-                time.sleep(0.2)
-                if i==30:
+                time.sleep(0.3)
+                if i==0:
                     L = self.ultrasonic.get_distance()
                 #elif i==90:
                 #    M = self.get_distance()
