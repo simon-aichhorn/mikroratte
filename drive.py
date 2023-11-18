@@ -55,7 +55,7 @@ class Drive:
         self.rfw.startRFW()
         self.motor.setMotorModel(-750,-750,-750,-750)
 
-        
+
     def stop(self):
         self.rfw.stopRFW()
         self.motor.setMotorModel(0,0,0,0)
@@ -96,7 +96,7 @@ class Drive:
 
     def rotateRight(self):
         self.motor.setMotorModel(1500,1500,-1500,-1500)
-        time.sleep(1)
+        time.sleep(0.85)
         self.motor.setMotorModel(0,0,0,0)
         
         

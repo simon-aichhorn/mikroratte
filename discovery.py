@@ -48,6 +48,10 @@ def startExploration(currentCell):
     if(drive.frontDistance > is_next_cell_free_thresh):
         print("Front is free!")
 
+    drive.slowBackward()
+    time.sleep(0.2)
+    drive.stop()
+
     # check wall right
     drive.rotateRight()
     setNewCurrentRotation()
@@ -76,6 +80,8 @@ try:
 
     # create start cell
     startCell=Cell(currentPosition[0], currentPosition[1])
+
+    time.sleep(1)
 
     # enter next cell
     drive.driveNextField()
