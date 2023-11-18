@@ -5,6 +5,7 @@ from Motor import Motor
 from Ultrasonic import Ultrasonic
 from Buzzer import *
 from servo import Servo
+from rfw import Rfw
 import threading
 
 class Drive:
@@ -14,6 +15,7 @@ class Drive:
         self.ultrasonic=Ultrasonic()
         self.initIR()
         self.pwm_S=Servo()
+        self.rfw=Rfw()
 
         self.still_driving=False
         self.leftDistance=0 # distance to left wall
@@ -50,9 +52,12 @@ class Drive:
                 self.stop_driving.set()
         
     def slowBackward(self):
+        self.rfw.startRFW()
         self.motor.setMotorModel(-750,-750,-750,-750)
+
         
     def stop(self):
+        self.rfw.stopRFW()
         self.motor.setMotorModel(0,0,0,0)
         
     def driveNextField(self):

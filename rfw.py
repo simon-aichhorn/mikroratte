@@ -39,4 +39,5 @@ class Rfw:
             self.buzzer.run('0')
             time.sleep(.5)
         else:
+            self.stopRFW()
             print("RFW is not active")
