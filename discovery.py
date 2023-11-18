@@ -41,12 +41,14 @@ def setNewCurrentRotation():
             currentOrientation='LINKS'
 
 def startExploration(currentCell):
+    free_ways=(false, false, false) # 1. left, 2. mid, 3. right
+    
     # wait for newest data to be fetched
     time.sleep(1)
     
     # check if wall in front
     if(drive.frontDistance > is_next_cell_free_thresh):
-        print("Front is free!")
+        free_ways[1]=True
 
     drive.slowBackward()
     time.sleep(0.2)
@@ -57,7 +59,7 @@ def startExploration(currentCell):
     setNewCurrentRotation()
     time.sleep(0.5)
     if(drive.frontDistance > is_next_cell_free_thresh):
-        print("Right is free!")
+        free_ways[2]=True
 
     # check wall left
     drive.rotateRight()
@@ -66,7 +68,10 @@ def startExploration(currentCell):
     setNewCurrentRotation()
     time.sleep(0.5)
     if(drive.frontDistance > is_next_cell_free_thresh):
-        print("Left is free!")
+        free_ways[0]=True
+
+    drive.rotateRight()
+    setNewCurrentRotation()
 
 for y in range(0, 7):
     row = []
@@ -80,21 +85,26 @@ try:
 
     # create start cell
     startCell=Cell(currentPosition[0], currentPosition[1])
+    grid[startCell.x][startCell.y]=startCell
 
     time.sleep(1)
 
-    # enter next cell
-    drive.driveNextField()
-    setNewCurrentPosition() # update position
-    
-    # create new cell
-    newCell=Cell(currentPosition[0], currentPosition[1])
-    # add new cell to previous cell
-    startCell.addConnectedCell(newCell)
+    for i in range(0,6):
+        # enter next cell
+        drive.driveNextField()
+        setNewCurrentPosition() # update position
+        
+        # create new cell
+        newCell=Cell(currentPosition[0], currentPosition[1])
 
-    startExploration(newCell)
+        if(i == 0):
+            # only add second cell directly to start cell, because start cell does not execute a scan
+            startCell.addConnectedCell(newCell)
 
-    print(grid)
+        grid[newCell.x][newCell.y]=newCell
+        startExploration(newCell)
+
+
 
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
