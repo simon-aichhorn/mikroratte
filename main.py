@@ -3,11 +3,13 @@ import time
 sys.path.append('Freenove_4WD_Smart_Car_Kit_for_Raspberry_Pi/Code/Server')
 from drive import Drive
 from led import LED
+from rfw import Rfw
 from rpi_ws281x import *
 
 try:
     drive=Drive()
     led=LED()
+    rfw=Rfw()
     
     # led.activateReverseLights()
     # time.sleep(2)
@@ -35,6 +37,9 @@ try:
     drive.driveNextField()
     time.sleep(2)
     drive.driveNextField()
+    rfw.startRFW()
+
+
 
 
 except KeyboardInterrupt: # interupting will stop car
