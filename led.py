@@ -26,7 +26,7 @@ class LED:
         self.led.strip.show()
 
     def deactivateReverseLights(self):
-        self.led.strip.setPixelColor(1, Color(0, 0, 0))
-        self.led.strip.setPixelColor(2, Color(0, 0, 0))
+        self.led.strip.setPixelColor(1, Color(192, 0, 0))
+        self.led.strip.setPixelColor(2, Color(192, 0, 0))
         self.led.strip.show()
 
