@@ -37,7 +37,9 @@ try:
     # drive.driveNextField()
     # time.sleep(2)
     # drive.driveNextField()
-    rfw.startRFW()
+    drive.slowBackward()
+    time.sleep(2)
+    drive.stop()
 
 
 
