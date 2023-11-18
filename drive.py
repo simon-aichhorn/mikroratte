@@ -27,7 +27,7 @@ class Drive:
         GPIO.setup(self.IR03,GPIO.IN)
         
     def slowForward(self):
-        while not stop_driving.is_set():
+        while not self.stop_driving.is_set():
             self.motor.setMotorModel(750,750,750,750)
             thread.sleep(0.5)
             self.motor.setMotorModel(0,0,0,0)
@@ -41,7 +41,7 @@ class Drive:
         
     def driveNextField(self):
         # create stopping event
-        stop_driving = threading.Event()
+        self.stop_driving = threading.Event()
 
         # create forwarding driving thread
         driveForwardThread = threading.Thread(target= self.slowForward)
@@ -57,7 +57,7 @@ class Drive:
 
         print("stop")
         # stop threads
-        stop_driving.set()
+        self.stop_driving.set()
         
     def driveBackField(self):
         self.slowBackward()
