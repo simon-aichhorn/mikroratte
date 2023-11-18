@@ -93,6 +93,11 @@ class Drive:
                 allActive = True
         
         self.stop()
+
+    def rotateRight(self):
+        self.motor.setMotorModel(1500,1500,-1500,-1500)
+        time.sleep(1)
+        self.motor.setMotorModel(0,0,0,0)
         
         
     def getIRState(self):
