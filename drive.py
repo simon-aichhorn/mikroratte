@@ -85,7 +85,7 @@ class Drive:
         until_time = time.time() + 1
 
         while(time.time() <= until_time):
-            if(self.getIRState() == 7 and self.ultrasonic.get_distance() < 7):
+            if(self.getIRState() == 7 or self.ultrasonic.get_distance() < 7):
                 return True 
         
         return False
