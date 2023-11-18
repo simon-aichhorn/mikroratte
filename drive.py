@@ -33,8 +33,9 @@ class Drive:
         
     def slowForward(self):
         while not self.stop_driving.is_set():
+            print("Distances", self.leftDistance, self.rightDistance)
             wallDifference = self.leftDistance - self.rightDistance # positive difference = correct to left | negative difference = correct to right
-            factor = 30
+            factor = 10
 
             nV = 750
             LW = nV - (wallDifference * factor)
@@ -113,7 +114,9 @@ class Drive:
                 if i==30:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    M = self.ultrasonic.get_distance()
+                    distanceFront = self.ultrasonic.get_distance()
+                    if(distanceFront < 6)
+                        self.stop_driving.set()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
             for i in range(0,181,90):
@@ -122,6 +125,8 @@ class Drive:
                 if i==0:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    M = self.ultrasonic.get_distance()
+                    distanceFront = self.ultrasonic.get_distance()
+                    if(distanceFront < 6)
+                        self.stop_driving.set()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
