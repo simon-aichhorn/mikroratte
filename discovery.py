@@ -41,7 +41,7 @@ def setNewCurrentRotation():
             currentOrientation='LINKS'
 
 def startExploration(currentCell):
-    free_ways=(false, false, false) # 1. left, 2. mid, 3. right
+    free_ways=(False, False, False) # 1. left, 2. mid, 3. right
     
     # wait for newest data to be fetched
     time.sleep(1)
