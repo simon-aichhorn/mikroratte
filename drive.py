@@ -68,7 +68,7 @@ class Drive:
                 time.sleep(0.5)
             else:
                 for i in range(0, 11):
-                    time.sleep(0.05)
+                    time.sleep(0.005)
                     if(self.isOnLine()):
                         break
                 else:
