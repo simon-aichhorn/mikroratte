@@ -33,6 +33,11 @@ class Drive:
         
     def slowForward(self, distances):
         wallDifference = distances[0] - distances[2] # positive difference = correct to left | negative difference = correct to right
+
+        #if we got no prober scan, just skip it
+        if(wallDifference > 20):
+            wallDifference = 0
+
         factor = 12
 
         nV = 750
