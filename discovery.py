@@ -192,6 +192,9 @@ try:
             drive.slowBackward()
             # Implement function to go one cell back
         else:
+            position = getRightPosition()
+            cell = grid[position[0]][position[1]]
+            print(position, cell.discovered)
             print("Deadend")
 
         drive.driveNextField()
