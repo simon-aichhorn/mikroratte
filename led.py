@@ -19,3 +19,12 @@ class LED:
     # cycles colors one time
     def showRainbow(self):
         self.led.rainbow(self.led.strip)
+
+    def activateReverseLights(self):
+        self.led.strip.setPixelColor(0, Color(255, 255, 255))
+        self.led.strip.setPixelColor(7, Color(255, 255, 255))
+
+    def deactivateReverseLights(self):
+        self.led.strip.setPixelColor(0, Color(255, 0, 0))
+        self.led.strip.setPixelColor(7, Color(255, 0, 0))
+
