@@ -103,6 +103,7 @@ try:
 
         grid[newCell.x][newCell.y]=newCell
         startExploration(newCell)
+        print("done!")
 
 
 
