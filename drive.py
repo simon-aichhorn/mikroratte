@@ -97,11 +97,11 @@ class Drive:
 
     def checkDistances(self):
         if(self.lastServoPos == 0):
-            return (checkLeft(), checkMid(), checkRight())
+            return (self.checkLeft(), self.checkMid(), self.checkRight())
         else:
-            right = checkRight()
-            mid = checkMid()
-            left = checkLeft()
+            right = self.checkRight()
+            mid = self.checkMid()
+            left = self.checkLeft()
             return (left, mid, right)
 
 
