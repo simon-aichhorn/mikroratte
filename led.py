@@ -10,6 +10,7 @@ class LED:
     
     def colorAllLeds(self):
         self.led.strip.setPixelColor(1, Color(255,0,0))
+        self.led.strip.show()
     
     # cycles colors one time
     def showRainbow(self):
