@@ -84,6 +84,7 @@ def createAndConnectCells(free_ways, current_cell):
             leftCell=Cell(leftCellPosition[0], leftCellPosition[1])
         current_cell.addConnectedCell(leftCell)
         leftCell.addConnectedCell(current_cell)
+        grid[leftCellPosition[0]][leftCellPosition[1]]=leftCell
 
     if(free_ways[1]):
         frontCellPosition=getFrontPosition()
@@ -92,6 +93,7 @@ def createAndConnectCells(free_ways, current_cell):
             frontCell=Cell(frontCellPosition[0], frontCellPosition[1])
         current_cell.addConnectedCell(frontCell)
         frontCell.addConnectedCell(current_cell)
+        grid[frontCellPosition[0]][frontCellPosition[1]]=frontCell
 
     if(free_ways[2]):
         rightCellPosition=getRightPosition()
@@ -100,6 +102,7 @@ def createAndConnectCells(free_ways, current_cell):
             rightCell=Cell(rightCellPosition[0], rightCellPosition[1])
         current_cell.addConnectedCell(rightCell)
         rightCell.addConnectedCell(current_cell)
+        grid[rightCellPosition[0]][rightCellPosition[1]]=rightCell
 
 
 def startExploration(currentCell):
