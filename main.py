@@ -9,27 +9,29 @@ try:
     drive=Drive()
     led=LED()
     
-    led.activateReverseLights()
-    time.sleep(2)
+    # led.activateReverseLights()
+    # time.sleep(2)
     
-    led.deactivateReverseLights()
+    # led.deactivateReverseLights()
 
-    time.sleep(2)
-    led.turnOff()
+    # time.sleep(2)
+    # led.turnOff()
 
-    time.sleep(2)
-    led.blinkers('left')
+    # time.sleep(2)
+    # led.blinkers('left')
 
-    time.sleep(2)
-    led.turnOff()
-    led.blinkers('right')
+    # time.sleep(2)
+    # led.turnOff()
+    # led.blinkers('right')
 
-    time.sleep(2)
-    led.turnOff()
-    led.blinkers('hazard')
+    # time.sleep(2)
+    # led.turnOff()
+    # led.blinkers('hazard')
 
-    time.sleep(2)
-    led.turnOff()
-    
+    # time.sleep(2)
+    # led.turnOff()
+    drive.driveNextField()
+
+
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
