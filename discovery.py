@@ -205,6 +205,8 @@ try:
         else:
             print("Deadend")
 
+        drive.driveNextField()
+        setNewCurrentPosition()
 
 
 except KeyboardInterrupt: # interupting will stop car
