@@ -4,6 +4,8 @@ import time
 from Motor import Motor
 from Ultrasonic import Ultrasonic
 from Buzzer import *
+from servo import Servo
+from threading import Thread
 
 class Drive:
     def __init__(self):
@@ -11,6 +13,7 @@ class Drive:
         self.buzzer=Buzzer()
         self.ultrasonic=Ultrasonic()
         self.initIR()
+        self.pwm_S=Servo()
         
     def initIR(self):
         self.IR01 = 14
@@ -32,11 +35,13 @@ class Drive:
         
     def driveNextField(self):
         self.slowForward()
-        
+        correctingDriveThread = Thread(target = self.correctDrive)
+        correctingDriveThread.start()
+
         #some sleep to drive away from line
         time.sleep(0.5)
         
-        self.waitForLine()
+        self.waitForLine(correctingDriveThread)
         
         
     def driveBackField(self):
@@ -47,16 +52,15 @@ class Drive:
         
         self.waitForLine()
         
-    def waitForLine(self):
+    def waitForLine(self, correctDriveThread):
         allActive = False
         # check if all ir are active
         while(not allActive):
             if(self.getIRState() == 7):
                 allActive = True
         
+        correctDriveThread.stop()
         self.stop()
-
-        
         
         
     def getIRState(self):
@@ -74,3 +78,29 @@ class Drive:
             bitcoded=(bitcoded | 4)
         
         return bitcoded
+
+    def correctDrive(self):
+        distanceLeft = 0
+        distanceRight = 0
+
+        while(True):
+            for i in range(90,30,-60):
+                self.pwm_S.setServoPwm('0',i)
+                time.sleep(0.1)
+                if i==30:
+                    distanceLeft = self.get_distance()
+                #elif i==90:
+                #    M = self.get_distance()
+                else:
+                    distanceRight = self.get_distance()
+                print(distanceLet, distanceRight)
+            for i in range(30,151,60):
+                self.pwm_S.setServoPwm('0',i)
+                time.sleep(0.1)
+                if i==30:
+                    L = self.get_distance()
+                #elif i==90:
+                #    M = self.get_distance()
+                else:
+                    R = self.get_distance()
+                print(distanceLet, distanceRight)
