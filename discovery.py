@@ -151,7 +151,7 @@ try:
     drive.driveNextField()
     setNewCurrentPosition() # update position
 
-    for i in range(0,15):
+    while(True):
         # get or create new cell
         newCell=getCellFromCurrentPosition()
         if(newCell == None):
@@ -192,10 +192,9 @@ try:
             drive.slowBackward()
             # Implement function to go one cell back
         else:
-            position = getRightPosition()
-            cell = grid[position[0]][position[1]]
-            print(position, cell.discovered)
-            print("Deadend")
+            # we have open cells?
+            print("Deadend, do we have open cells?")
+            break
 
         drive.driveNextField()
         setNewCurrentPosition()
