@@ -125,7 +125,7 @@ def startExploration(currentCell):
         free_ways=(free_ways[0], free_ways[1], True)
 
     # check wall left
-    if(drive.checkMid() > is_next_cell_free_thresh):
+    if(drive.checkLeft() > is_next_cell_free_thresh):
         free_ways=(True, free_ways[1], free_ways[2])
 
     return free_ways
