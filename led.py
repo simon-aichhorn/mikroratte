@@ -9,7 +9,8 @@ class LED:
         self.led=Led()
     
     def colorAllLeds(self):
-        self.led.strip.setPixelColor(1, Color(255,0,0))
+        for ledIndex in range(0, 9):
+            self.led.strip.setPixelColor(ledIndex, Color(255,0,0))
         self.led.strip.show()
     
     # cycles colors one time
