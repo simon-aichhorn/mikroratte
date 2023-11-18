@@ -17,6 +17,7 @@ currentOrientation='RECHTS'
 is_next_cell_free_thresh = 30
 
 def getCellFromCurrentPosition():
+    print(currentPosition)
     return grid[currentPosition[0]][currentPosition[1]]
 
 def setNewCurrentPosition():
@@ -183,7 +184,6 @@ try:
         if(free_ways[1] and not grid[getFrontPosition()[0]][getFrontPosition()[1]].discovered):
 
             drive.driveNextField()
-            setNewCurrentPosition()
         elif(free_ways[0] and not grid[getLeftPosition()[0]][getLeftPosition()[1]].discovered):
             drive.rotateRight()
             drive.rotateRight()
@@ -192,13 +192,11 @@ try:
             setNewCurrentRotation()
             setNewCurrentRotation()
             drive.driveNextField()
-            setNewCurrentPosition()
         elif(free_ways[2] and not grid[getRightPosition()[0]][getRightPosition()[1]].discovered):
             drive.rotateRight()
             setNewCurrentRotation()
 
             drive.driveNextField()
-            setNewCurrentPosition()
 
         elif(not free_ways[0] and not free_ways[1] and not free_ways[2]):
             drive.slowBackward()
@@ -213,6 +211,5 @@ try:
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
 
-except Exception as e:
-    print(e)
-    drive.stop()
+#except Exception as e:
+#    print(e)
