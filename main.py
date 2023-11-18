@@ -32,11 +32,11 @@ try:
 
     # time.sleep(2)
     # led.turnOff()
-    drive.driveNextField()
-    time.sleep(2)
-    drive.driveNextField()
-    time.sleep(2)
-    drive.driveNextField()
+    # drive.driveNextField()
+    # time.sleep(2)
+    # drive.driveNextField()
+    # time.sleep(2)
+    # drive.driveNextField()
     rfw.startRFW()
 
 
