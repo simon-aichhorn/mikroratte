@@ -35,3 +35,9 @@ try:
 
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
+
+except Exception as e:
+    print(e)
+    drive.stop()
+    led.turnOff()
+    led.blinkers('hazard')
