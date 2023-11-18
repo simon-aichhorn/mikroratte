@@ -40,19 +40,21 @@ class LED:
         self.led.strip.show()
 
     def blinkers(self, type):
+        blink_color = Color(155, 34, 32)
+
         for blinks in range(0,5):
             match type:
                 case 'left':
-                    self.led.strip.setPixelColor(3, Color(155, 34, 32))
-                    self.led.strip.setPixelColor(4, Color(155, 34, 32))
+                    self.led.strip.setPixelColor(3, blink_color)
+                    self.led.strip.setPixelColor(4, blink_color)
                 case 'right':
-                    self.led.strip.setPixelColor(0, Color(155, 34, 32))
-                    self.led.strip.setPixelColor(7, Color(155, 34, 32))
+                    self.led.strip.setPixelColor(0, blink_color)
+                    self.led.strip.setPixelColor(7, blink_color)
                 case 'hazard':
-                    self.led.strip.setPixelColor(0, Color(155, 34, 32))
-                    self.led.strip.setPixelColor(3, Color(155, 34, 32))
-                    self.led.strip.setPixelColor(4, Color(155, 34, 32))
-                    self.led.strip.setPixelColor(7, Color(155, 34, 32))
+                    self.led.strip.setPixelColor(0, blink_color)
+                    self.led.strip.setPixelColor(3, blink_color)
+                    self.led.strip.setPixelColor(4, blink_color)
+                    self.led.strip.setPixelColor(7, blink_color)
             self.led.strip.show()
             time.sleep(0.5)
             self.turnOff()
