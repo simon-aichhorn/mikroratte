@@ -16,6 +16,9 @@ class Drive:
         self.initIR()
         self.pwm_S=Servo()
         self.rfw=Rfw()
+
+        self.pwm_S.setServoPwm('0', 0)
+        self.lastServoPos=0
         
     def initIR(self):
         self.IR01 = 14
@@ -93,21 +96,32 @@ class Drive:
         return bitcoded
 
     def checkDistances(self):
-        distances=(0,0,0)
+        if(self.lastServoPos == 0):
+            return (checkLeft(), checkMid(), checkRight())
+        else:
+            right = checkRight()
+            mid = checkMid()
+            left = checkLeft()
+            return (left, mid, right)
 
+
+    def checkLeft(self):
         #read left
         self.pwm_S.setServoPwm('0', 0)
         time.sleep(0.2)
-        distances=(self.ultrasonic.get_distance(), 0, 0)
+        self.lastServoPos=0
+        return self.ultrasonic.get_distance()
 
+    def checkMid(self):
         #read mid
         self.pwm_S.setServoPwm('0', 90)
         time.sleep(0.2)
-        distances=(distances[0], self.ultrasonic.get_distance(), 0)
+        self.lastServoPos=90
+        return self.ultrasonic.get_distance()
 
+    def checkRight(self):
         #read right
         self.pwm_S.setServoPwm('0', 180)
         time.sleep(0.2)
-        distances=(distances[0], distances[1], self.ultrasonic.get_distance())
-
-        return distances
+        self.lastServoPos=180
+        return self.ultrasonic.get_distance()
