@@ -124,19 +124,19 @@ class Drive:
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.1)
                 if i==30:
-                    self.leftDistance = self.ultrasonic.get_distance()
+                    self.leftDistance = self.ultrasonic.get_distance() % 33
                 elif i==90:
                     test = self.ultrasonic.get_distance()
                     self.frontDistance = test
                 else:
-                    self.rightDistance = self.ultrasonic.get_distance()
+                    self.rightDistance = self.ultrasonic.get_distance()  % 33
             for i in range(0,181,90):
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.1)
                 if i==0:
-                    self.leftDistance = self.ultrasonic.get_distance()
+                    self.leftDistance = self.ultrasonic.get_distance() % 33
                 elif i==90:
                     test = self.ultrasonic.get_distance()
                     self.frontDistance = test
                 else:
-                    self.rightDistance = self.ultrasonic.get_distance()
+                    self.rightDistance = self.ultrasonic.get_distance() % 33
