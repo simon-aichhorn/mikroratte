@@ -17,7 +17,7 @@ currentOrientation='RECHTS'
 is_next_cell_free_thresh = 30
 
 def getCellFromCurrentPosition():
-    return grid[currentPosition[0], currentPosition[1]]
+    return grid[currentPosition[0]][currentPosition[1]]
 
 def setNewCurrentPosition():
     global currentPosition
