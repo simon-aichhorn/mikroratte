@@ -116,7 +116,7 @@ def startExploration(currentCell):
         free_ways=(free_ways[0], True, free_ways[2])
 
     drive.slowBackward()
-    time.sleep(0.5)
+    time.sleep(0.4)
     drive.stop()
 
     # check wall right
@@ -175,6 +175,7 @@ try:
 
         
         free_ways = startExploration(newCell)
+        print(free_ways)
         createAndConnectCells(free_ways, newCell)
 
         grid[newCell.x][newCell.y]=newCell
