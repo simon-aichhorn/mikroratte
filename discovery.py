@@ -117,27 +117,17 @@ def startExploration(currentCell):
         free_ways=(free_ways[0], True, free_ways[2])
 
     drive.slowBackward()
-    time.sleep(0.4)
+    time.sleep(0.5)
     drive.stop()
 
     # check wall right
-    drive.rotateRight()
-    setNewCurrentRotation()
-    time.sleep(0.5)
-    if(drive.checkMid() > is_next_cell_free_thresh):
+    if(drive.checkRight() > is_next_cell_free_thresh):
         free_ways=(free_ways[0], free_ways[1], True)
 
     # check wall left
-    drive.rotateRight()
-    drive.rotateRight()
-    setNewCurrentRotation()
-    setNewCurrentRotation()
-    time.sleep(0.5)
     if(drive.checkMid() > is_next_cell_free_thresh):
         free_ways=(True, free_ways[1], free_ways[2])
 
-    drive.rotateRight()
-    setNewCurrentRotation()
     return free_ways
 
 for y in range(0, 7):
