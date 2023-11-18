@@ -19,6 +19,8 @@ class Drive:
 
         self.pwm_S.setServoPwm('0', 0)
         self.lastServoPos=0
+        self.lineSensorActive=False
+        self.foundLine=False
         
     def initIR(self):
         self.IR01 = 14
@@ -51,16 +53,39 @@ class Drive:
         self.motor.setMotorModel(0,0,0,0)
         
     def driveNextField(self):
-        while(not self.isOnLine()):
+        run = 0
+
+        while(True):
             distances=self.checkDistances()
 
             # check if we are standing in front of a wall
             if(distances[1] < 8):
                 break
 
+
             self.slowForward(distances)
-            time.sleep(0.5)
+            if(run == 0):
+                time.sleep(0.5)
+            else:
+                time.sleep(1)
+                if(self.isOnLine()):
+                    break
+                time.sleep(1)
+                if(self.isOnLine()):
+                    break
+                time.sleep(1)
+                if(self.isOnLine()):
+                    break
+                time.sleep(1)
+                if(self.isOnLine()):
+                    break
+                time.sleep(1)
+                if(self.isOnLine()):
+                    break
+
             self.stop()
+
+            run += 1
         
     def driveBackField(self):
         self.slowBackward()
