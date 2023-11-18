@@ -49,6 +49,7 @@ class Drive:
             time.sleep(0.1)
 
             if(self.frontDistance < 12):
+                print("Stopped cause of front")
                 self.stop_driving.set()
         
     def slowBackward(self):
@@ -63,7 +64,6 @@ class Drive:
     def driveNextField(self):
         # create stopping event
         self.stop_driving = threading.Event()
-        print(self.stop_driving)
 
         # create forwarding driving thread
         driveForwardThread = threading.Thread(target= self.slowForward)
@@ -93,6 +93,7 @@ class Drive:
             if(self.getIRState() == 7):
                 allActive = True
         
+        print("Found line!")
         self.stop()
 
     def rotateRight(self):
