@@ -79,7 +79,7 @@ def setNewCurrentRotation():
 def createAndConnectCells(free_ways, current_cell):
     if(free_ways[0]):
         leftCellPosition=getLeftPosition()
-        leftCell=grid[leftCellPosition[0]][leftCellPosition[1]]()
+        leftCell=grid[leftCellPosition[0]][leftCellPosition[1]]
         if(leftCell == None):
             leftCell=Cell(leftCellPosition[0], leftCellPosition[1])
         current_cell.addConnectedCell(leftCell)
@@ -87,7 +87,7 @@ def createAndConnectCells(free_ways, current_cell):
 
     if(free_ways[1]):
         frontCellPosition=getFrontPosition()
-        frontCell=grid[frontCellPosition[0]][frontCellPosition[1]]()
+        frontCell=grid[frontCellPosition[0]][frontCellPosition[1]]
         if(frontCell == None):
             frontCell=Cell(frontCellPosition[0], frontCellPosition[1])
         current_cell.addConnectedCell(frontCell)
@@ -95,7 +95,7 @@ def createAndConnectCells(free_ways, current_cell):
 
     if(free_ways[2]):
         rightCellPosition=getRightPosition()
-        rightCell=grid[rightCellPosition[0]][rightCellPosition[1]]()
+        rightCell=grid[rightCellPosition[0]][rightCellPosition[1]]
         if(rightCell == None):
             rightCell=Cell(rightCellPosition[0], rightCellPosition[1])
         current_cell.addConnectedCell(rightCell)
