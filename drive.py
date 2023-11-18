@@ -127,7 +127,9 @@ class Drive:
                 if i==30:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    self.frontDistance = self.ultrasonic.get_distance()
+                    test = self.ultrasonic.get_distance()
+                    print(test)
+                    self.frontDistance = test
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
             for i in range(0,181,90):
@@ -136,6 +138,8 @@ class Drive:
                 if i==0:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
-                    self.frontDistance = self.ultrasonic.get_distance()
+                    test = self.ultrasonic.get_distance()
+                    print(test)
+                    self.frontDistance = test
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
