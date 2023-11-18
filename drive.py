@@ -73,8 +73,8 @@ class Drive:
                         break
                 else:
                     continue
+                self.stop()
                 break
-
             self.stop()
 
             run += 1
