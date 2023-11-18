@@ -40,6 +40,8 @@ class Drive:
             LW = nV - (wallDifference * factor)
             RW = nV + (wallDifference * factor)
 
+            print(LW, RW)
+
             self.motor.setMotorModel(LW,LW,RW,RW)
             time.sleep(0.5)
             self.motor.setMotorModel(0,0,0,0)
