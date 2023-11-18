@@ -96,17 +96,17 @@ class Drive:
         distances=(0,0,0)
 
         #read left
-        self.pwm_S.setServoPWM('0', 0)
+        self.pwm_S.setServoPwm('0', 0)
         time.sleep(0.2)
         distances=(self.ultrasonic.get_distance(), 0, 0)
 
         #read mid
-        self.pwm_S.setServoPWM('0', 90)
+        self.pwm_S.setServoPwm('0', 90)
         time.sleep(0.2)
         distances=(distances[0], self.ultrasonic.get_distance(), 0)
 
         #read right
-        self.pwm_S.setServoPWM('0', 180)
+        self.pwm_S.setServoPwm('0', 180)
         time.sleep(0.2)
         distances=(distances[0], distances[1], self.ultrasonic.get_distance())
 
