@@ -18,6 +18,9 @@ class Drive:
         self.still_driving=False
         self.leftDistance=0 # distance to left wall
         self.rightDistance=0 # distance to right wall
+
+        correctingDriveThread = threading.Thread(target = self.correctDrive)
+        correctingDriveThread.start()
         
     def initIR(self):
         self.IR01 = 14
@@ -54,15 +57,13 @@ class Drive:
 
         # create forwarding driving thread
         driveForwardThread = threading.Thread(target= self.slowForward)
-        correctingDriveThread = threading.Thread(target = self.correctDrive)
-
+        
         driveForwardThread.start()
-        correctingDriveThread.start()
 
         #some sleep to drive away from line
         time.sleep(0.5)
         
-        self.waitForLine(correctingDriveThread)
+        self.waitForLine()
 
         # stop threads
         self.stop_driving.set()
@@ -75,7 +76,7 @@ class Drive:
         
         self.waitForLine()
         
-    def waitForLine(self, correctDriveThread):
+    def waitForLine(self):
         allActive = False
         # check if all ir are active
         while(not allActive):
