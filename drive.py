@@ -62,19 +62,14 @@ class Drive:
             if(distances[1] < 8):
                 break
 
-
             self.slowForward(distances)
+            
             if(run == 0):
-                time.sleep(0.5)
+                time.sleep(1)
             else:
-                for i in range(0, 11):
-                    time.sleep(0.005)
-                    if(self.isOnLine()):
-                        break
-                else:
-                    continue
-                self.stop()
-                break
+                if(self.isOnLine()):
+                    break
+
             self.stop()
 
             run += 1
@@ -89,7 +84,13 @@ class Drive:
         self.waitForLine()
         
     def isOnLine(self):
-        return self.getIRState() == 7
+        until_time = time.time() + 1
+
+        while(time.time() <= until_time):
+            if(getIRState() == 7):
+                return True 
+        
+        return False
 
     def rotateRight(self):
         self.motor.setMotorModel(1500,1500,-1500,-1500)
