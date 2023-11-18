@@ -37,12 +37,12 @@ class Drive:
     def slowForward(self):
         while not self.stop_driving.is_set():
             wallDifference = self.leftDistance - self.rightDistance # positive difference = correct to left | negative difference = correct to right
-            factor = 20
+            factor = 17
 
             nV = 750
             LW = nV - (wallDifference * factor)
             RW = nV + (wallDifference * factor)
-
+            print(LW, RW)
             self.motor.setMotorModel(LW,LW,RW,RW)
             time.sleep(0.25)
             self.motor.setMotorModel(0,0,0,0)
