@@ -96,7 +96,7 @@ def createAndConnectCells(free_ways, current_cell):
     if(free_ways[2]):
         rightCellPosition=getRightPosition()
         rightCell=grid[rightCellPosition[0]][rightCellPosition[1]]()
-        if(rightCell == None)
+        if(rightCell == None):
             rightCell=Cell(rightCellPosition[0], rightCellPosition[1])
         current_cell.addConnectedCell(rightCell)
         rightCell.addConnectedCell(current_cell)
@@ -178,23 +178,24 @@ try:
 
         if(free_ways[1] and not grid[getFrontPosition()[0]][getFrontPosition()[1]].discovered):
             drive.driveNextField()
+            setNewCurrentPosition
         elif(free_ways[0] and not grid[getLeftPosition()[0]][getLeftPosition()[1]].discovered):
             drive.rotateRight()
             drive.rotateRight()
             drive.rotateRight()
-            drive.setNewCurrentRotation()
-            drive.setNewCurrentRotation()
-            drive.setNewCurrentRotation()
+            setNewCurrentRotation()
+            setNewCurrentRotation()
+            setNewCurrentRotation()
             drive.driveNextField()
-            drive.setNewCurrentPosition()
-        elif(free_ways[2] and not grid[getRightPosition()[2]][getRightPosition()[2]].discovered)
+            setNewCurrentPosition()
+        elif(free_ways[2] and not grid[getRightPosition()[2]][getRightPosition()[2]].discovered):
             drive.rotateRight()
-            drive.setNewCurrentRotation()
+            setNewCurrentRotation()
 
             drive.driveNextField()
-            drive.setNewCurrentPosition()
+            setNewCurrentPosition()
 
-        elif(not free_ways[0] and not free_ways[1] and not free_ways[2])
+        elif(not free_ways[0] and not free_ways[1] and not free_ways[2]):
             drive.slowBackward()
             # Implement function to go one cell back
         else
