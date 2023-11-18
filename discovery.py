@@ -199,9 +199,6 @@ try:
             # Implement function to go one cell back
         else
             print("Deadend")
-        
-            
-        drive.driveNextField()
 
 
 
