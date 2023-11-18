@@ -188,7 +188,7 @@ try:
             setNewCurrentRotation()
             drive.driveNextField()
             setNewCurrentPosition()
-        elif(free_ways[2] and not grid[getRightPosition()[2]][getRightPosition()[2]].discovered):
+        elif(free_ways[2] and not grid[getRightPosition()[0]][getRightPosition()[1]].discovered):
             drive.rotateRight()
             setNewCurrentRotation()
 
