@@ -21,9 +21,11 @@ try:
     led.blinkers('left')
 
     time.sleep(2)
+    led.turnOff()
     led.blinkers('right')
 
     time.sleep(2)
+    led.turnOff()
     led.blinkers('hazard')
 
     time.sleep(2)
