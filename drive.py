@@ -35,7 +35,7 @@ class Drive:
         wallDifference = distances[0] - distances[2] # positive difference = correct to left | negative difference = correct to right
         factor = 17
 
-        nV = 650
+        nV = 750
         LW = nV - (wallDifference * factor)
         RW = nV + (wallDifference * factor)
 
