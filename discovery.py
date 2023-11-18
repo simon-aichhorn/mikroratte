@@ -56,8 +56,8 @@ def startExploration(currentCell):
     # check wall left
     drive.rotateRight()
     drive.rotateRight()
-    setNewCurrentPosition()
-    setNewCurrentPosition()
+    setNewCurrentRotation()
+    setNewCurrentRotation()
     time.sleep(0.5)
     if(drive.frontDistance > is_next_cell_free_thresh):
         print("Left is free!")
