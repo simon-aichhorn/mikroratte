@@ -35,8 +35,8 @@ class Rfw:
     def _beep_continuously(self):
         while self.isRFWActive:
             self.buzzer.run('1')
-            time.sleep(1)
+            time.sleep(.5)
             self.buzzer.run('0')
-            time.sleep(1)
+            time.sleep(.5)
         else:
             print("RFW is not active")
