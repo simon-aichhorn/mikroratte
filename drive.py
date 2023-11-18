@@ -86,6 +86,7 @@ class Drive:
             self.stop()
 
             run += 1
+        self.stop()
         
     def driveBackField(self):
         self.slowBackward()
