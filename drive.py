@@ -33,7 +33,7 @@ class Drive:
         
     def slowForward(self, distances):
         wallDifference = distances[0] - distances[2] # positive difference = correct to left | negative difference = correct to right
-        factor = 17
+        factor = 12
 
         nV = 750
         LW = nV - (wallDifference * factor)
@@ -87,7 +87,7 @@ class Drive:
         until_time = time.time() + 1
 
         while(time.time() <= until_time):
-            if(getIRState() == 7):
+            if(self.getIRState() == 7):
                 return True 
         
         return False
