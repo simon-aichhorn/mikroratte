@@ -29,7 +29,7 @@ class Drive:
     def slowForward(self):
         while not stop_driving.is_set():
             self.motor.setMotorModel(750,750,750,750)
-            thread.sleep(0.1)
+            thread.sleep(0.5)
             self.motor.setMotorModel(0,0,0,0)
             thread.sleep(0.1)
         
@@ -55,6 +55,7 @@ class Drive:
         
         self.waitForLine(correctingDriveThread)
 
+        print("stop")
         # stop threads
         stop_driving.set()
         
@@ -97,7 +98,7 @@ class Drive:
         distanceRight = 0
 
         while(True):
-            for i in range(,30,-60):
+            for i in range(90,30,-60):
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.3)
                 if i==30:
@@ -111,9 +112,9 @@ class Drive:
                 self.pwm_S.setServoPwm('0',i)
                 time.sleep(0.3)
                 if i==0:
-                    L = self.ultrasonic.get_distance()
+                    distanceLeft = self.ultrasonic.get_distance()
                 #elif i==90:
                 #    M = self.get_distance()
                 else:
-                    R = self.ultrasonic.get_distance()
+                    distanceRight = self.ultrasonic.get_distance()
                 print(distanceLeft, distanceRight)
