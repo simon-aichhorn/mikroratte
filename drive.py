@@ -115,7 +115,7 @@ class Drive:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
                     distanceFront = self.ultrasonic.get_distance()
-                    if(distanceFront < 6)
+                    if(distanceFront < 6):
                         self.stop_driving.set()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
@@ -126,7 +126,7 @@ class Drive:
                     self.leftDistance = self.ultrasonic.get_distance()
                 elif i==90:
                     distanceFront = self.ultrasonic.get_distance()
-                    if(distanceFront < 6)
+                    if(distanceFront < 6):
                         self.stop_driving.set()
                 else:
                     self.rightDistance = self.ultrasonic.get_distance()
