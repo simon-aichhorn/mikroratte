@@ -20,7 +20,7 @@ class Drive:
         self.still_driving=False
         self.leftDistance=0 # distance to left wall
         self.rightDistance=0 # distance to right wall
-        self.frontDistance=0 # distance to front
+        self.frontDistance=12 # distance to front
 
         correctingDriveThread = threading.Thread(target = self.correctDrive)
         correctingDriveThread.start()
