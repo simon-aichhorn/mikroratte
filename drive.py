@@ -29,9 +29,9 @@ class Drive:
     def slowForward(self):
         while not self.stop_driving.is_set():
             self.motor.setMotorModel(750,750,750,750)
-            thread.sleep(0.5)
+            time.sleep(0.5)
             self.motor.setMotorModel(0,0,0,0)
-            thread.sleep(0.1)
+            time.sleep(0.1)
         
     def slowBackward(self):
         self.motor.setMotorModel(-750,-750,-750,-750)
