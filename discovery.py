@@ -116,7 +116,7 @@ def startExploration(currentCell):
         free_ways=(free_ways[0], True, free_ways[2])
 
     drive.slowBackward()
-    time.sleep(0.2)
+    time.sleep(0.5)
     drive.stop()
 
     # check wall right
@@ -180,7 +180,7 @@ try:
         grid[newCell.x][newCell.y]=newCell
 
         if(free_ways[1] and not grid[getFrontPosition()[0]][getFrontPosition()[1]].discovered):
-            print("Yes!")
+
             drive.driveNextField()
             setNewCurrentPosition()
         elif(free_ways[0] and not grid[getLeftPosition()[0]][getLeftPosition()[1]].discovered):
