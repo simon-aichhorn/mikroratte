@@ -35,7 +35,7 @@ class Drive:
         wallDifference = distances[0] - distances[2] # positive difference = correct to left | negative difference = correct to right
 
         #if we got no prober scan, just skip it
-        if(wallDifference > 20):
+        if(wallDifference > 20 or wallDifference < 20):
             wallDifference = 0
 
         factor = 12
@@ -44,7 +44,6 @@ class Drive:
         LW = nV - (wallDifference * factor)
         RW = nV + (wallDifference * factor)
 
-        print(LW, RW)
         self.motor.setMotorModel(LW,LW,RW,RW)
 
         
