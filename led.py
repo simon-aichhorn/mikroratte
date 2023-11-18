@@ -50,5 +50,5 @@ class LED:
                 self.led.strip.setPixelColor(3, Color(155, 34, 32))
                 self.led.strip.setPixelColor(4, Color(155, 34, 32))
                 self.led.strip.setPixelColor(7, Color(155, 34, 32))
-            self.led.strip.show()
+        self.led.strip.show()
 
