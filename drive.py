@@ -17,10 +17,7 @@ class Drive:
         self.pwm_S=Servo()
         self.rfw=Rfw()
 
-        self.pwm_S.setServoPwm('0', 0)
-        self.lastServoPos=0
-        self.lineSensorActive=False
-        self.foundLine=False
+        self.pwm_S.setServoPwm('0', 90)
         
     def initIR(self):
         self.IR01 = 14
@@ -62,10 +59,6 @@ class Drive:
         while(True):
             distances=self.checkDistances()
 
-            # check if we are standing in front of a wall
-            if(distances[1] < 8):
-                break
-
             self.slowForward(distances)
             
             if(run == 0):
@@ -88,11 +81,11 @@ class Drive:
         
         self.waitForLine()
         
-    def isOnLine(self):
+    def isOnLineOrWall(self):
         until_time = time.time() + 1
 
         while(time.time() <= until_time):
-            if(self.getIRState() == 7):
+            if(self.getIRState() == 7 and self.ultrasonic.get_distance() < 7):
                 return True 
         
         return False
@@ -120,12 +113,9 @@ class Drive:
         return bitcoded
 
     def checkDistances(self):
-        if(self.lastServoPos == 0):
-            return (self.checkLeft(), self.checkMid(), self.checkRight())
-        else:
             right = self.checkRight()
-            mid = self.checkMid()
             left = self.checkLeft()
+            mid = self.checkMid()
             return (left, mid, right)
 
 
