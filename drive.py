@@ -46,7 +46,7 @@ class Drive:
             self.motor.setMotorModel(0,0,0,0)
             time.sleep(0.1)
 
-            if(self.frontDistance < 5):
+            if(self.frontDistance < 12):
                 self.stop_driving.set()
         
     def slowBackward(self):
