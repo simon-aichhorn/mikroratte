@@ -9,28 +9,13 @@ try:
     drive=Drive()
     led=LED()
     
-    led.colorAllLeds(Color(128,192,73))
-    
-    time.sleep(5)
-    
-    led.turnOff()
-
     led.activateReverseLights()
-
-    time.sleep(5)
+    time.sleep(2)
 
     led.activateDayLight()
-
-    time.sleep(5)
+    time.sleep(2)
 
     led.turnOff()
-    #for i in range(0, 3):
-    #   drive.driveNextField()
-    #  time.sleep(0.5)
-        
-    #for i in range(0, 2):
-    #    drive.driveBackField()
-    #    time.sleep(0.5)
     
 except KeyboardInterrupt: # interupting will stop car
     drive.stop()
