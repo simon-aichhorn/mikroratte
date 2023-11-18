@@ -65,7 +65,7 @@ class Drive:
             self.slowForward(distances)
             
             if(run == 0):
-                time.sleep(1)
+                time.sleep(0.3)
             else:
                 if(self.isOnLine()):
                     print("Detected Line!")
