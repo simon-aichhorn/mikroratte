@@ -19,7 +19,7 @@ try:
 
     time.sleep(5)
 
-    led.deactivateReverseLights()
+    led.activateDayLight()
 
     time.sleep(5)
 
