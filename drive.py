@@ -17,7 +17,7 @@ class Drive:
         self.pwm_S=Servo()
         self.rfw=Rfw()
 
-        self.pwm_S.setServoPwm('0', 90)
+        self.pwm_S.setServoPwm('0', 0)
         
     def initIR(self):
         self.IR01 = 14
@@ -84,12 +84,15 @@ class Drive:
     def isOnLineOrWall(self):
         until_time = time.time() + 1
 
+        count = 0
         while(time.time() <= until_time):
-            distance = self.ultrasonic.get_distance()
-            print(distance)
-            if(self.getIRState() == 7 or distance < 7):
+            #distance = self.ultrasonic.get_distance()
+            #print(distance)
+            count += 1
+            # or distance < 7
+            if(self.getIRState() == 7):
                 return True 
-        
+        print(count)
         return False
 
     def rotateRight(self):
