@@ -7,8 +7,8 @@ class Cell:
         self.discovered=False
         
         # werte für dijkstra
-        cost=None
-        previous=None
+        self.cost=None
+        self.previous=None
 
     def addConnectedCell(self, cell):
         self.connectedTo.append(cell)
