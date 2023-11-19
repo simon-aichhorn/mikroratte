@@ -236,3 +236,10 @@ fe.addConnectedCell(ve)
 fe.addConnectedCell(fz)
 
 grid=[[nn,ne,nz,nd,nv,nf,ns], [en,ee,ez,ed,ev,ef,es], [zn,ze,zz,zd,zv,zf,zs], [dn,de,dz,dd,dv,df,ds], [vn,ve,vz,vd,vv,vf,vs], [fn,fe,fz,fd,fv,ff,fs], [sn,se,sz,sd,sv,sf,ss]]
+
+d=Dijkstra(grid)
+d.fastestWay((0,0))
+d.solve()
+
+item=grid[1][4]
+print(item.cost)
