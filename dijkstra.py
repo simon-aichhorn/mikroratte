@@ -23,10 +23,11 @@ class Dijkstra:
                     neighbor.cost = calcCost
                     neighbor.previous = neighbor
 
-                neighborAlreadyDone = any(done.x == neighbor.x and done.y == neighbor.y for done in self.waiting)
+                neighborAlreadyDone = any((done.x == neighbor.x and done.y == neighbor.y) for done in self.waiting)
                 if(not neighborAlreadyDone):
                     self.waiting.append(neighbor)
 
+            self.waiting.remove(currentItem)
             self.done.append(currentItem)
             print(len(self.waiting))
 
