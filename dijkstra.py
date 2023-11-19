@@ -23,7 +23,7 @@ class Dijkstra:
                     neighbor.cost = calcCost
                     neighbor.previous = neighbor
 
-                neighborAlreadyDone = any((done.x == neighbor.x and done.y == neighbor.y) for done in self.waiting)
+                neighborAlreadyDone = any((done.x == neighbor.x and done.y == neighbor.y) for done in self.done)
                 if(not neighborAlreadyDone):
                     self.waiting.append(neighbor)
 
@@ -245,4 +245,4 @@ d.fastestWay((0,0))
 d.solve()
 
 item=grid[1][4]
-print(item.cost)
+print(item)
