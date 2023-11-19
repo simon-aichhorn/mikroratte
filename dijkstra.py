@@ -16,7 +16,7 @@ class Dijkstra:
             currentItem = min(self.waiting, key=lambda x: x.cost)
 
             for neighbor in currentItem.connectedTo:
-                calcCost = currentItem.cost + neighbor.cost
+                calcCost = currentItem.cost + 1
 
                 if(neighbor.cost == None or calcCost < neighbor.cost):
                     neighbor.cost = calcCost
