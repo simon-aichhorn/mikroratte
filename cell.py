@@ -1,6 +1,6 @@
 class Cell:
     
-    def __init__(self, x, y):
+    def __init__(self, y, x):
         self.x=x
         self.y=y
         self.connectedTo=[]
