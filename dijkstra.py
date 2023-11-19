@@ -239,6 +239,9 @@ fz.addConnectedCell(fe)
 fe.addConnectedCell(ve)
 fe.addConnectedCell(fz)
 
+
+for x in nn.connectedTo:
+    print("haha", x.x, x.y)
 grid=[[nn,ne,nz,nd,nv,nf,ns], [en,ee,ez,ed,ev,ef,es], [zn,ze,zz,zd,zv,zf,zs], [dn,de,dz,dd,dv,df,ds], [vn,ve,vz,vd,vv,vf,vs], [fn,fe,fz,fd,fv,ff,fs], [sn,se,sz,sd,sv,sf,ss]]
 
 d=Dijkstra(grid)
