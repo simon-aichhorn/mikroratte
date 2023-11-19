@@ -12,7 +12,7 @@ class Dijkstra:
         self.waiting.append(startCell)
 
     def solve(self):
-        while(len(waiting) != 0):
+        while(len(self.waiting) != 0):
             currentItem = min(self.waiting, key=lambda x: x.cost)
 
             for neighbor in currentItem.connectedTo:
