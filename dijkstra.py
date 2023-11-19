@@ -27,6 +27,7 @@ class Dijkstra:
                     self.waiting.append(neighbor)
 
             self.done.append(currentItem)
+            print(len(self.waiting))
 
 nn=Cell(0,0)
 ne=Cell(0,1)
