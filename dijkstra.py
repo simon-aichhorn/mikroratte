@@ -20,7 +20,7 @@ class Dijkstra:
 
                 if(neighbor.cost == None or calcCost < neighbor.cost):
                     neighbor.cost = calcCost
-                    neighbor.previous = neighbor
+                    neighbor.previous = currentItem
 
                 neighborAlreadyDone = any((done.x == neighbor.x and done.y == neighbor.y) for done in self.done)
                 if(not neighborAlreadyDone):
@@ -244,4 +244,7 @@ d.fastestWay((0,0))
 d.solve()
 
 item=grid[1][4]
-print(item.x,item.y)
+
+while(item != None):
+    print(item.x,item.y)
+    item=item.previous
