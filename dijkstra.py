@@ -244,9 +244,4 @@ d.fastestWay((0,0))
 d.solve()
 
 item=grid[1][4]
-
-while(item.previous != None):
-    print("Zell", item.x, item.y)
-    item = item.previous
-
-print(item, item.x, item.y)
+print(item.x,item.y)
