@@ -14,10 +14,8 @@ class Dijkstra:
     def solve(self):
         while(len(self.waiting) != 0):
             currentItem = min(self.waiting, key=lambda x: x.cost)
-            print("Current", currentItem.x, currentItem.y)
 
             for neighbor in currentItem.connectedTo:
-                print("Neighbor", neighbor.x, neighbor.y)
                 calcCost = currentItem.cost + 1
 
                 if(neighbor.cost == None or calcCost < neighbor.cost):
@@ -30,7 +28,6 @@ class Dijkstra:
 
             self.waiting.remove(currentItem)
             self.done.append(currentItem)
-            print("Warteschleife", len(self.waiting))
 
 nn=Cell(0,0)
 ne=Cell(0,1)
@@ -240,8 +237,6 @@ fe.addConnectedCell(ve)
 fe.addConnectedCell(fz)
 
 
-for x in nn.connectedTo:
-    print("haha", x.x, x.y)
 grid=[[nn,ne,nz,nd,nv,nf,ns], [en,ee,ez,ed,ev,ef,es], [zn,ze,zz,zd,zv,zf,zs], [dn,de,dz,dd,dv,df,ds], [vn,ve,vz,vd,vv,vf,vs], [fn,fe,fz,fd,fv,ff,fs], [sn,se,sz,sd,sv,sf,ss]]
 
 d=Dijkstra(grid)
@@ -249,4 +244,9 @@ d.fastestWay((0,0))
 d.solve()
 
 item=grid[1][4]
-print(item)
+
+while(item.previous != None):
+    print("Zell", item.x, item.y)
+    item = item.previous
+
+print(item, item.x, item.y)
