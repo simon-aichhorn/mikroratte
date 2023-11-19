@@ -1,4 +1,4 @@
-
+from cell import Cell
 
 class Dijkstra:
     def __init__(self, grid):
