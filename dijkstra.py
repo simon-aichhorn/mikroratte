@@ -14,9 +14,9 @@ class Dijkstra:
     def solve(self):
         while(len(self.waiting) != 0):
             currentItem = min(self.waiting, key=lambda x: x.cost)
-            print(currentItem.x, currentItem.y)
 
             for neighbor in currentItem.connectedTo:
+                print("Neighbor", neighbor.x, neighbor.y)
                 calcCost = currentItem.cost + 1
 
                 if(neighbor.cost == None or calcCost < neighbor.cost):
