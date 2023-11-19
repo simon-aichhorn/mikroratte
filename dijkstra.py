@@ -14,6 +14,7 @@ class Dijkstra:
     def solve(self):
         while(len(self.waiting) != 0):
             currentItem = min(self.waiting, key=lambda x: x.cost)
+            print("Current", currentItem.x, currentItem.y)
 
             for neighbor in currentItem.connectedTo:
                 print("Neighbor", neighbor.x, neighbor.y)
@@ -29,7 +30,7 @@ class Dijkstra:
 
             self.waiting.remove(currentItem)
             self.done.append(currentItem)
-            print(len(self.waiting))
+            print("Warteschleife", len(self.waiting))
 
 nn=Cell(0,0)
 ne=Cell(0,1)
